@@ -1,0 +1,605 @@
+\documentclass[11pt]{article}
+\usepackage{tutorial-students}
+
+
+\newcommand{\fillinMCmath}[1]{\begin{tikzpicture}\draw circle [radius=0.5em];\end{tikzpicture}\ #1}
+\newcommand{\fillinMCmathsoln}[1]{\begin{tikzpicture}\draw[black, fill=blue] circle [radius=0.5em];\end{tikzpicture}\ #1}
+
+\author{}
+\date{}
+\begin{document}
+
+\title{CPSC 320 2021W1: Assignment 1}
+
+\maketitle
+\vspace{-0.5in}
+
+This assignment is due on \textbf{Wednesday, Sep 22 at 10pm Vancouver time} on Gradescope. Assignments submitted within 24 hours after the deadline will be accepted, but a penalty of 15\% will be applied. Please follow these guidelines:
+
+\begin{itemize}
+\item
+We strongly recommend that you prepare your solution using \LaTeX, and submit a
+pdf file.  Easiest will be to use the .tex file provided, along with the
+provided tutorial-students.sty file.
+We will accept
+solutions that are prepared using other good formatting systems, as
+long as they are clearly legibile. Solutions that are handwritten or
+difficult to read will receive a grade of zero.
+
+\item
+  For
+questions where you need to select a circle, you can simply change
+\verb~\fillinMCmath~ to \verb~\fillinMCmathsoln~ .
+\item
+In problem 3 below, you'll see an example of how you can format pseudocode using latex. If you have your own preferred way to format pseudocode, you can use that, take an image of it, and insert it as a figure into your document using the following lines (changing the file name as needed and adjusting the width so that it displays clearly):
+
+\begin{verbatim}
+\begin{center}
+\includegraphics[width=0.3\textwidth]{filename.jpg}
+\end{center}
+\end{verbatim}
+
+\item
+  We would also appreciate it if you could typeset your solutions in blue, as it makes it easier for TAs to find the solutions. To do this, all you need to do is use the following lines in your latex file:
+
+\begin{verbatim}
+\begin{soln}
+[Your solution here]
+\end{soln}
+\end{verbatim}
+
+which will produce:
+
+\begin{soln}
+[Your solution here]
+\end{soln}
+
+\item
+Whenever possible, keep the solution to a subproblem on a single page, rather than having it span two pages.  
+
+\item Include in question 1 below the \textbf{names} of each member
+  of your team, as recorded on Canvas. If you want an extra
+double-check on your identity, include your student number.
+Reminder: groups should include a
+maximum of three students; we encourage groups of two.
+\item 
+Start each problem on a new page, using the same numbering and ordering as this
+handout.
+\item
+  Submit the assignment via GradeScope.
+  Your group must make a \textbf{single} submission via one group member's account, marking all other group members in that submission \textbf{using GradeScope's interface}. 
+\item
+After uploading to Gradescope, link each question with all the pages
+of your pdf containing your solution. There are instructions for doing this on the CPSC 121 website, see \url{https://www.students.cs.ubc.ca/~cs-121/2019W1/index.php?page=assignments&menu=1&submenu=3}.
+\end{itemize}
+
+Before  we  begin, a  few  notes  on pseudocode. Your
+pseudocode should  communicate your
+algorithm  clearly,  concisely,  correctly, and  without  irrelevant  detail.
+Reasonable  use of  plain  English is  fine. You  should
+envision your  audience as  a capable  CPSC 320  student unfamiliar  with the
+problem you are solving.
+
+Remember also to \textbf{justify/explain your answers}, unless explicitly indicated otherwise.  We understand
+that gauging how much justification to provide can be tricky.
+Inevitably, judgment is applied by both student and grader as to how
+much is enough, or too much, and it's frustrating for all concerned when judgments
+don't align.  Justifications/explanations need not be long or formal,
+but should be clear and specific (referring back to lines of
+pseudocode, for example). In this class the words \textbf{``prove'',
+``explain'', ``show''} and \textbf{``justify''} are used interchangeably; we're
+not looking for the formality that might be expected in a Math
+class. You don't need to be more formal when a proof is requested, but
+sometimes formal notation or assertions can really help make concepts
+clear and unambiguous.
+
+On the plus side, if you choose an incorrect answer when selecting an
+option but your reasoning shows partial understanding, you might get
+more marks than if no justification is provided. And the effort you
+expend in writing down the justification will hopefully help you gain
+deeper understanding and may well help you converge to the right
+selection :)
+
+Ok, time to get started...
+
+\newpage
+\vspace*{1pt}
+
+%------------------------------------------------------------------------------------
+\section{List of names of group members (as listed on Canvas)}
+
+Provide the list here. This is worth 1 mark. Include student numbers
+as a secondary failsafe if you wish.
+
+\begin{soln}
+Mathew Balsdon 21041694 \\
+Michael Woolsey 87234621
+\end{soln}
+
+\section{Statement on collaboration and use of resources}
+To develop good practices in doing homeworks,
+citing resources and acknowledging input from others, please complete the following.
+This question is worth 2 marks.
+
+\begin{enumerate}
+\item All group members have read and followed the guidelines for groupwork
+on assignments given on the website (see \url{https://www.students.cs.ubc.ca/~cs-320/2021S2/coursework.html}, under Assignments).
+\fillinMCmathsoln{Yes} \hspace{.5in} \fillinMCmath{No}
+
+\item We used the following resources (list books, online sources, etc. that you consulted):
+
+\begin{soln} 
+CPSC 320 Piazza
+\end{soln}
+
+\item One or more of us consulted with course staff during office hours.
+
+\fillinMCmath{Yes} \hspace{.5in} \fillinMCmathsoln{No}
+
+\item One or more of us collaborated with other CPSC 320 students; none of us took
+      written notes during our consultations and we took at least a half-hour break afterwards.
+
+\fillinMCmath{Yes} \hspace{.5in} \fillinMCmathsoln{No}
+
+      If yes, please list their name(s) here:
+
+
+\item One or more of us collaborated with or consulted others outside of CPSC 320; none of us took written notes during our consultations and we took at least a half-hour break afterwards.
+
+\fillinMCmath{Yes} \hspace{.5in} \fillinMCmathsoln{No}
+
+      If yes, please list their name(s) here:
+
+\end{enumerate}
+\newpage
+
+\section{Stable Cross-Functional Teams}
+	\label{sec:s3dm}
+
+For this problem, we will explore a generalization of the Stable Matching Problem
+to 3-way, ``cross-functional teams.''
+
+Imagine an entrepreneurship program,
+where students sign up for one of 3 different roles:
+the computer science expert, who is to provide the technical vision
+behind a start-up company;
+the business expert, who is expected to manage the business aspects
+of creating and growing the company;
+and the problem domain expert, who should understand the problem that
+the start-up company is trying to address (e.g., someone with boating
+and nautical experience if the start-up is trying to create autonomous
+ships; or someone with medical expertise if the start-up is trying to
+create new medical testing equipment).\footnote{
+Obviously, in real life, someone might span multiple of these roles,
+but for this program, assume students are permitted to sign up for
+only one role.}
+The task is to assemble the students into 3-person
+cross-functional teams, with one student from each role.  As in the
+Stable Matching Problem, students provide complete preference
+rankings of how much they want to work with each of the other students
+in the other roles, and an overall 3-way matching is ``stable'' if
+there does not exist any group of 3 students who are not already on
+a team together, but who would rather work with each other than
+with their assigned teammates.
+
+Formally, let $n$ be the number of students in each role,
+with
+$B$ being the set of business experts,
+$C$ being the set of computer science experts,
+and $D$ being the set of problem domain experts,
+and $|B|=|C|=|D|=n$.
+A \textit{cross-functional team} (just ``team'' for short) consists of a
+triple $(b,c,d)$, where $b\in B$, $c\in C$, and $d\in D$.
+A \textit{perfect 3-way matching} is a set of teams, such that every student is
+in exactly one team.
+As in the worksheets, we will use the notation $x >_y z$ to denote
+that student $y$ prefers student $x$ to student $z$ (and similarly,
+$x \ge_y z$ iff $x >_y z$ or $x=z$).
+We can then define that a perfect 3-way matching $M$ is \textit{unstable} iff
+there exists a possible team $(b,c',d'')\not\in M$,
+where the teams $(b,c,d)\in M$, $(b',c',d')\in M$, and $(b'',c'',d'')\in M$,
+but where
+\begin{eqnarray*}
+( c' \ge_b c ) \wedge (d'' \ge_b d) \\
+\wedge ( b \ge_{c'} b' ) \wedge (d'' \ge_{c'} d') \\
+\wedge ( b \ge_{d''} b'' ) \wedge (c' \ge_{d''} c'')
+\end{eqnarray*}
+In other words, each of $b$, $c'$, and $d''$ would rather work
+together as the team $(b,c',d'')$
+at least as much as they would with their assigned teammates.
+The problem is, given all of the students' preferences, to compute
+a stable, perfect 3-way matching.
+
+\begin{enumerate}
+\item (3 marks)
+As in the worksheets, it's good to start by coming up with small and trivial
+problem instances.  For this part of the question, create an instance
+of this problem with $n=2$, and provide a solution to your instance
+that is \textit{unstable}.  Explain why the solution is unstable
+by pointing out a specific team that is not in the solution, but whose
+members would prefer to be in that team over their current assignments
+(i.e., show how your solution meets the formal definition of being
+unstable given in the problem statement).
+\begin{soln}
+    \\\\
+    $x_y$ would denote $x$'s preferences for $y$'s. Let:\\
+    $b_c$: $\{c', c\}$ and $b_d$: $\{d', d\}$ \\
+    $b'_c$: $\{c, c'\}$ and $b'_d$: $\{d, d'\}$ \\
+    $c_d$: $\{d, d'\}$ and $c_b$: $\{b', b\}$ \\
+    $c'_{b}$: $\{d', d\}$ and $c'_{d}$: $\{b, b'\}$ \\
+    $d_{b}$: $\{b', b\}$ and $d_{c}$: $\{c, c'\}$ \\
+    $d'_{b}$: $\{b, b'\}$ and $d'_{c}$: $\{c', c\}$ \\
+    
+    In this formulation, our matchings are $(b, c, d) \in M$ and $(b', c', d') \in M$. This matching is unstable, since the matching $(b, c'. d) \notin M$, but: \\
+    
+    Let $b' = b''$, $c' = c''$, and $d' = d''$. Then we have: \\
+    $(c' \geq_b c) \wedge (d'' \geq_b d) \\
+    \wedge (b \geq_{c'} b') \wedge (d'' \geq_{c'} d') \\
+    \wedge (b \geq_{d''} b'') \wedge (c' \geq_{d''} c'')$, \\
+    which follows from the preference lists. In the case of $(d'' \geq_{c'} d')$, and $(c' \geq_{d''} c'')$ they are true since $d'' = d'$ and $c' = c''$. Therefore, this matching is unstable.
+\end{soln}
+
+\item (3 marks)
+Now give an instance with $n=2$ (it could be the same instance as in
+the preceding part) and a solution that is \textit{stable}.  Briefly
+justify why it is stable.
+
+\begin{soln}
+    Let the matchings be: \\
+    $b_c$: $\{c', c\}$ and $b_d$: $\{d, d'\}$ \\
+    $b'_c$: $\{c, c'\}$ and $b'_d$: $\{d', d\}$ \\
+    $c_d$: $\{d', d\}$ and $c_b$: $\{b', b\}$ \\
+    $c'_{b}$: $\{d, d'\}$ and $c'_{d}$: $\{b, b'\}$ \\
+    $d_{b}$: $\{b, b'\}$ and $d_{c}$: $\{c', c\}$ \\
+    $d'_{b}$: $\{b', b\}$ and $d'_{c}$: $\{c, c'\}$ \\
+    Using the same M as before, if our matchings were instead $M = {(b, c', d), (b', c, d')}$, we would have a stable matching. This can be shown clearly as every individual element in M's matchings first prefer the other members in its matching over the members in the other match.
+\end{soln}
+
+\item (2 marks)
+Following the worksheets, let's formulate a brute-force
+solution to this problem.  A brute force algorithm could generate
+every possible perfect 3-way matching, and then check each one
+to see whether it's stable or not.
+How many possible perfect 3-way matchings are there?  Give your
+answer as a function of $n$.  (You may want to review the solution
+in the worksheet to count all possible perfect (2-way) matchings,
+and try a similar approach.)
+
+\begin{soln}
+    $(n!)^2$ possible 3-way matchings!
+\end{soln}
+
+\item (2 marks)
+Now, given an instance of the Stable Cross-Functional Team problem
+(i.e., given all the preferences) and a perfect 3-way matching, design
+a brute-force algorithm to check whether that perfect 3-way matching
+is stable (i.e., contains no instabilities).
+\begin{soln}
+    \begin{algorithmic}[1]
+    \Procedure{Brute-Force-3-Way-Matching}{$n, P_b, P_c, P_d$}
+    \State $\triangleright$ $n \geq 1$ is the total number of, B, C, and D (all must be the same length)
+    \State $\triangleright$ $P_b$ is the collection of complete preference lists $(> _b)$ of the Business Experts, B, which contains info about C and D
+    \State $\triangleright$ $P_c$ is the collection of complete preference lists $(> _c)$ of the Comp Sci Experts, C, which contains info about B and D
+    \State $\triangleright$ $P_d$ is the collection of complete preference lists $(> _d)$ of the Domain Experts, D, which contains info about B and C
+    
+    \For {each perfect matching M}
+     \If{M is a stable solution, i.e calling Is-Stable(M)}
+     
+        \State \Return $M$
+        \EndIf
+     \EndFor  
+     
+     \Return "No stable matching"
+\EndProcedure
+
+
+
+    \Function{Is-Stable}{M}
+        \State $\triangleright$ $M$ is a perfect matching
+        \State $\triangleright$ return true if M is a stable matching in the instance ($n, P_b, P_c, P_d$)
+        \State $\triangleright$ The if statements inside the loop are only split up to comply with $\LaTeX$ formatting
+        \For{all $b \in B$}
+            \For{all  $c' \in C$}
+                \For{all $d'' \in D$}
+                    \If{$(b,c',d'') \notin M$}
+                        \State find b s.t. $(b,c,d) \in M$
+                        \State find c' s.t. $(b,c,d) \in M$
+                        \State find d'' s.t. $(b,c,d) \in M$
+                        \If{$(c' \geq _b c) \wedge (d'' \geq _b d) \wedge (b \geq _{c'} b')$}
+                        \If{$ (d'' \geq _{c'} d') \wedge (b \geq _{d''} b'') \wedge (c' \geq _{d''} c'')$}
+                        
+                            \State \Return false
+                            \EndIf
+                        \EndIf
+                    \EndIf
+                \EndFor 
+            \EndFor
+        \EndFor
+        \Return true
+    \EndFunction
+
+\end{algorithmic}
+
+
+\end{soln}
+
+
+\item (2 marks)
+Give a tight big-O bound on the runtime
+for your algorithm to check stability from the preceding part.
+You should assume, as we did on the worksheets, that basic operations
+(e.g., looking up someone's teammates, comparing how two students rank
+on another student's preference list, etc.) take constant time.
+
+\begin{soln}
+    It will be $O(n^3)$    
+\end{soln}
+
+\item (1 mark)
+Give a tight big-O bound on the runtime of the overall brute force
+algorithm.
+
+\begin{soln}
+     It will be $O(n^3 (n!)^2)$
+\end{soln}
+
+\item (3 marks)
+Now, imagine that you have a special quantum-magic-computing box (and
+I'll throw in deep learning and blockchain, too, just to get a better
+buyout price from some SPAC, but I digress...) that can perform the
+Gale-Shapley algorithm on instances with $n$ employers/applicants
+in time $o(n^2)$.
+Construct an algorithm that uses this quantum-magic box to
+solve the Stable Cross-Functional Teams problem
+in time $o(n^2)$.  (Hint:  Can you break the Stable Cross Functional Teams
+problem down into a small number of calls to a function that solves
+the Stable Matching Problem?)
+
+\begin{soln}
+    \begin{algorithmic}[1]
+        \Procedure{Stable-Cross-Functional-Teams}{$n, b_c, c_b, d_c, c_d$}
+            \State $M_{bc} \leftarrow GS(n, b_c, c_b)$
+             \State $M_{cd} \leftarrow GS(n, d_c, c_d)$
+             \State M = $[]$
+             \For{each element in $M_{bc}$: $(b,c)$}
+                \State find c's corresponding match in $M_{cd}$: d
+                \State add (b, c, d) to M
+             \EndFor
+             \State return M
+        \EndProcedure
+    \end{algorithmic}
+\end{soln}
+
+\item (2 marks)
+Prove that your algorithm from the preceding part always produces
+a perfect 3-way matching (i.e., that every student is in exactly
+one team).  (Hint:  This should be short, if you did the preceding part
+correctly.)
+
+\begin{soln}
+    We know that Gale-Shapley (or GS) produces a perfect matching of two sets given the preference lists of each. Therefore, $M_{bc}$ is a perfect matching of n elements from B and C, and  $M_{cd}$ is a perfect matching of n elements from C and D. We then perform a form of element-wise union, where we join together the pairs (b,c) and (c,d) along the element c, creating n pairs of (b,c,d) in M. Since in $M_{bc}$ each element of C appears only once from GS's correctness, and in $M_{cd}$ each element of C appears only once for the same reason, this means (b,c,d)'s n pairs must contain each c, and each c is matched with only 1 element from B and element from D, so therefore M will be a perfect matching.
+\end{soln}
+
+\item (2 marks)
+Prove that your algorithm from the preceding part always produces
+a stable 3-way matching.  (Hint:  Consider an arbitrary team
+that is \textit{not} in the solution $M$.  Show that it is impossible
+that the students on this team would all prefer this team to the ones
+they are on already.)
+
+\begin{soln}
+    Let's assume the team (b, c', d'') is not in M. We will show that they cannot prefer each other. \\
+$( c' \ge_b c ) \wedge (d'' \ge_b d) 
+\wedge ( b \ge_{c'} b' ) \wedge (d'' \ge_{c'} d') 
+\wedge ( b \ge_{d''} b'' ) \wedge (c' \ge_{d''} c'').$ \\
+    If all of these criteria are true, our pair (b, c', d'') prefer each other over their current match.
+    By our use of GS, all elements in M have an element $b_0$ that is maximally happy with $c_0$, and $d_0$ is maximally happy with $c_0$. By unioning with this $c_0$ to create a pair $(b_0, c_0, d_0)$, $b_0$ will prefer $c_0$ to any other option that did not reject it, and $d_0$ will prefer $c_0$ to any other option that did not reject it. This means that $(b_0, c_0, d_0)$ is stable. However, a pair in (b, c', d''), that is not in M will mean that both (b, c') failed $GS(n, b_c, c_b)$, and (c', d'') failed $GS(n, d_c, c_d)$. This means that b and d'' are not happy with c', and would break $( b \ge_{c'} b' ) \wedge ( c' \ge_b c )$ for (b, c'). This is enough to break our definition of an instability, meaning that this pair  (b, c', d'') cannot possibly prefer each other.
+\end{soln}
+
+\end{enumerate}
+
+\newpage
+\section{Big-$O$ Analysis: Algorithms on Numbers}
+Let $x$ and $y$ be two nonnegative integers, represented in binary.
+Assume for concreteness that there are no leading zero's in the
+binary representations; for example the number three is
+represented as 11 and not as 00011.  (If you prefer, you
+can assume that the numbers are represented in decimal and answer the
+problem for decimal addition and division operations, it won't
+change the answer.)
+
+\begin{enumerate}
+\item
+{\bf Addition.} A standard algorithm for adding $x$ and $y$
+produces the sum $x + y$ by working from low-order bits to high-order
+bits of each number. A carry bit is initially set to
+0. The algorithm iteratively produces an output bit from the carry and two bits of $x$ and
+$y$ (or just one of these if all bits of the other have already been
+considered), and updates the carry. Once all bits of $x$ and $y$ are considered,
+if the carry is 1, then a final high-order 1 is output.
+
+\begin{enumerate}
+\item (2 marks)
+  Give a tight big-$O$ bound on the running time of this algorithm as a function of $x$ and $y$.
+  Justify your answer.
+  You may assume that you can access the bits of the numbers in constant time
+  (i.e., you can get the value of the $i$th bit for any $i$).
+ 
+ 
+\begin{soln}
+    At most per bit of x and y, we will have 4 accesses, one for x and y, another for carry, and one more for output. The number of iterations we will need to do will be the number of bits of the longest number. The way to find the number of bits of a binary number, i, is by doing $\lceil log_2(i)\rceil$, so to find the longest number out of x and y it would look like $\lceil max(log_2(x), log_2(y))\rceil$, and since there will be at most 4 operations per iteration, our result will be in $O(4 \lceil max(log_2(x), log_2(y))\rceil) \in O(\lceil max(log(x), log(y)) \rceil)$\\\\
+\end{soln}
+
+\item (2 marks)
+Which categories does the running time of the standard addition algorithm belong to?
+Choose as many as apply. (Your justification for your choices need not consider all
+options separately; may be able to justify your choices across a row with one sentence, using
+facts that you already know about the growth of functions.)
+
+\[
+\begin{array}{cccc}
+\fillinMCmathsoln{O(x y)} &
+\fillinMCmathsoln{O(x + y)} &
+\fillinMCmathsoln{O(\log x \log y)} &
+\fillinMCmathsoln{O(\log x + \log y)} \\
+\fillinMCmathsoln{o(x y)} &
+\fillinMCmathsoln{o(x + y)} &
+\fillinMCmathsoln{o(\log x \log y)} &
+\fillinMCmath{o(\log x + \log y)}
+\end{array}
+\]
+\begin{soln}
+\\
+    All of the options that contain no logs are in the runtime of our function, as these will clearly grow faster than our solution, which contains only logs. Also the multiplications of logs will clearly be larger than our sum of logs. Our solution is equivalent to $O(log(x) + log(y))$, which means that we are in $O(log(x) + log(y))$, yet not in $o(log(x) + log(y))$.
+\end{soln}
+\end{enumerate}
+
+\item
+{\bf Least Common Multiple.}
+Algorithm LCM finds the least common multiple of $x$ and $y$:
+
+\vspace{.1in}
+
+\begin{algorithmic}
+\Procedure{LCM}{$x,y$}
+\State $m \leftarrow \max\{x,y\}$
+\While {$(m \bmod x \neq 0) \; \mbox{or} \; (m \bmod y \neq 0)$}
+   \State $m \leftarrow m+1$
+   \EndWhile   
+   \State \Return $m$
+\EndProcedure
+\end{algorithmic}
+
+
+\begin{enumerate}
+\item (2 marks)
+Give a tight big-$O$ bound on the number of times that the mod
+operation is applied in the LCM algorithm, as a function of $x$ and
+$y$. Justify your answer.
+\\
+\begin{soln}
+    The largest the LCM could be is $x*y$. In the worst case, we would begin at the larger of x and y and increment until reaching $x*y$. Since every pass of the loop calculates 2 mod operations, we would have $2(xy - \max\{x,y\})$ mod operations. This means that this procedure is in $O(2*xy - 2*\max\{x,y\}) \in O(xy)$
+\end{soln}
+\item (2 marks)
+Describe an infinite set of pairs $(x,y)$ for which the number of times
+that the mod operation is applied is $O(1)$.
+\\
+\begin{soln}
+    When x=y, then m, x, and y will all be equal (and thus divisible by each other). The number of mod operations that will be calculated will always be 2, after which the procedure will return.
+\end{soln}
+\item (2 marks)
+
+Which of the following categories
+describe how many times the mod operation is executed?
+Choose as many as apply, and justify your answer.
+
+\[
+\begin{array}{cccc}
+\fillinMCmathsoln{O(x y)} &
+\fillinMCmath{O(x + y)} &
+\fillinMCmath{O(\log x \log y)} &
+\fillinMCmath{O(\log x + \log y)} \\
+\fillinMCmath{\Theta(x y)} &
+\fillinMCmath{\Theta(x + y)} &
+\fillinMCmath{\Theta(\log x \log y)} &
+\fillinMCmath{\Theta(\log x + \log y)} \\
+\end{array}
+\]
+\begin{soln}
+
+\noindent {\bf Justification:}
+In part 1 of this problem we obtained a tight big-$O$ bound of $O(xy)$. 
+Asymptotically, this grows faster than any other function in the first row, so we do not select these other functions.
+
+In part 2 of this problem we see that the running time is $O(1)$ on infinitely many inputs, and so do not select any
+option in row 2.
+\end{soln}
+\end{enumerate}
+\end{enumerate}
+
+\newpage
+\section{Recursive Permutation Generation}
+The brute force algorithm for stable matching in the worksheet relied on a means to generate permutations.
+The following recursive algorithm can be used to generate all $n!$
+permutations of a set of $n$ distinct integers, which are stored in an array $p[1..n]$.
+
+\vspace{.1in}
+
+\begin{algorithmic}[1]
+\Function{Generate-All-Permutations}{$p[1..n]$, $i$}
+\State $\triangleright$ $p[1..n]$ contains $n$ distinct integers, $1 \le i \le n$
+\State $\triangleright$ generate the $i!$ permutations that end with $p[i+1..n]$
+\State $\triangleright$ upon completion, $p[1..n]$ is same as its initial value
+\If{$i = 1$}
+\State \textbf{output} $p[1..n]$
+\Else
+   \For{$j$ from $i$ downto 1}
+      \State swap($p[i]$,$p[j]$)
+      \State \textsc{Generate-All-Permutations}($p[1..n]$, $i-1$)
+      \State swap($p[i]$,$p[j]$)
+   \EndFor
+\EndIf
+\EndFunction
+\end{algorithmic}
+
+\begin{enumerate}
+\item (1 mark)
+  When $n=4$, $i=4$, and the value of the array is initially 3295  (i.e., $p[1] = 3$, $p[2]= 2$, $p[3]=9$, and $p[4]= 5$), what is the {\em first} permutation that is output?
+(No justification is needed for this and the next three parts of the problem.)\\
+\begin{soln}
+    3295
+\end{soln}
+
+\item (1 mark)
+  When $n=4$, $i=4$, and the value of the array is initially 3295, what is the {\em second} permutation that is output?\\
+\begin{soln}
+    2395
+\end{soln}
+
+\item (1 mark)
+When $n=7$, $i=4$, and the value of the array is initially 3295486, what is the {\em second} permutation that is output?\\
+\begin{soln}
+    2395486
+\end{soln}
+
+\item (1 mark)
+When $n=4$, $i=4$, and the value of the array is initially 3295, what is the {\em third} permutation that is output?\\
+\begin{soln}
+    3925
+\end{soln}
+
+\item (1 mark)
+When $n=4$, $i=4$, and the value of the array is initially 3295, what is the {\em very last} permutation that is output?\\
+\begin{soln}
+    2953\\
+    \includegraphics[width=400px]{q5.5.png}
+\end{soln}
+
+
+\item (4 marks)
+Use induction on $i$ to prove the following claim.  
+
+\noindent  
+{\bf Claim}: Let $n > 0$ and let $1 \le i \le n$. For any value of the array $p[1..n]$, when a call to
+\textsc{Generate-All-Permutations}($p[1..n]$, $i$) is made, the value
+of $p[1..n]$ upon returning from the call is exactly the same as the
+initial value when that call is made.\\
+\begin{soln}
+    Base case: i=1\\
+    Because of lines 5:6, whenever i=1, we will simply just output $p[1..n]$, meaning that $p[1..n]$ is never changed, so it is the exactly the same as the initial call.\\\\
+    Assume that the value of $p[1..n]$ stays the same upon calling \textsc{Generate-All-Permutations}($p[1..n]$, $i$). \\We will show that the value of $p[1..n]$ stays the same upon calling \textsc{Generate-All-Permutations}($p[1..n]$, $i+1$)
+    \\
+    We call \textsc{Generate-All-Permutations}($p[1..n]$, $i+1$), and since i must be at least 2, we will go into the else block. We will initially swap the positions at i+1 and j, (and at line 8 we define j to equal i+1). Then we will call \textsc{Generate-All-Permutations}($p[1..n]$, $i$), but we already know this must preserve $p[1..n]$ due to our hypothesis. After this recursive call, we will undo the swap that occurred on line 9 in line 11. With this swap being undo-ed, the value of $p[1..n]$ will have stayed the same by the end of 1 loop of the for loop. However, this same pattern applies to all future decrements of j down to 1, at which point the loop will have terminated. Upon termination of the function, we must have retained the value of $p[1..n]$.
+    
+\end{soln}
+
+\item (1 mark)
+What initial call outputs all $n!$ permutations of the numbers in $p[1..n]$?
+Check one. No justification needed.
+
+\fillinMCmathsoln{Generate-Permutations($p[1..n]$, $n$)}
+
+\fillinMCmath{Generate-Permutations($p[1..n]$, $1$)}
+
+\end{enumerate}
+\end{document}
